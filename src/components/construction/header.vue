@@ -1,55 +1,64 @@
 <template>
-  <header>
-    <div class="headers">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <header class="header">
+    <div class="container-lg">
+      <nav class="header__navbar navbar-expand-lg">
         <router-link to="/"
-          ><img src="@/assets/icon/logo.svg" alt="Xbox logo"
+          ><img src="@/assets/icon/logo.svg" alt="Xbox Logo"
         /></router-link>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
+        <ul class="header__list">
+          <li>
+            <b-dropdown
+              text="Games"
+              variant="outline-none border-none text-white"
+            >
+              <b-dropdown-item-button
+                v-for="item in xboxGames"
+                :key="item.value"
+                >{{ item.game }}</b-dropdown-item-button
               >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
+            </b-dropdown>
+          </li>
+          <li>
+            <b-dropdown
+              text="Consoles"
+              variant="outline-none border-none text-white"
+            >
+              <b-dropdown-item-button
+                v-for="item in xboxConsoles"
+                :key="item.value"
+                >{{ item.console }}</b-dropdown-item-button
               >
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-2"
-              type="search"
+            </b-dropdown>
+          </li>
+          <li>
+            <router-link to="/"
+              ><b-button variant="outline-none border-none text-white"
+                >Community</b-button
+              ></router-link
+            >
+          </li>
+          <li>
+            <b-form-input
+              size="sm"
+              class="py-2"
               placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
+            ></b-form-input>
+          </li>
+          <li>
+            <span><img src="@/assets/icon/Shape.svg" alt="" /></span>
+            <b-dropdown
+              text="My XBOX"
+              variant="outline-none border-none text-white"
+              class="header__dropdown"
+            >
+              <b-dropdown-item-button
+                v-for="item in accountXbox"
+                :key="item.value"
+                >{{ item.action }}</b-dropdown-item-button
+              >
+            </b-dropdown>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -58,14 +67,78 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      xboxGames: [
+        { game: "Call of Duty: WWII", value: "cod" },
+        { game: "Destiny 2", value: "dst" },
+        { game: "STEEP", value: "stp" },
+        { game: "Forza Motorsport 7", value: "fmt" },
+      ],
+      xboxConsoles: [
+        { console: "Xbox 360", value: "360" },
+        { console: "Xbox One", value: "one" },
+        { console: "Xbox One S", value: "ones" },
+        { console: "Xbox One X", value: "onex" },
+      ],
+      accountXbox: [
+        { action: "Sign in to your account", value: "sign" },
+        { action: "Create an account", value: "create" },
+      ],
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.headers {
-  background-color: $black;
+@import "@/assets/scss/variables";
+.header {
   width: 100%;
+  background-color: $dark-grey;
+  position: fixed;
+  z-index: +99;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  .container {
+    margin: 0 auto;
+    width: 76%;
+  }
+  &__navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s ease;
+    &:hover {
+      color: $white;
+    }
+    li {
+      margin-top: 10px;
+      margin-right: 25px;
+    }
+  }
+  select {
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    background: $dark-grey;
+    background: none;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s ease;
+    &:hover {
+      color: $white;
+    }
+    option {
+      background: $dark-grey;
+      &:hover {
+        background: $black;
+        color: $white;
+      }
+    }
+  }
 }
 </style>
