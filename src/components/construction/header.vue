@@ -99,6 +99,7 @@ export default {
   top: 0px;
   left: 0px;
   right: 0px;
+  max-height: 64px;
   .container {
     margin: 0 auto;
     width: 76%;
@@ -134,10 +135,6 @@ export default {
     }
     option {
       background: $dark-grey;
-      &:hover {
-        background: $black;
-        color: $white;
-      }
     }
   }
 }
