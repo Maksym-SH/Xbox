@@ -1,19 +1,29 @@
 <template>
-  <div class="section">
-    <div class="container">
-      <div class="section__game-naming">
-        <h1>Star Wars<br />Battlefront II</h1>
-      </div>
-      <div class="section__button">
-        <button><a :href="links[0]" target="_blank">Watch Tralier</a></button>
-        <button><a :href="links[1]" target="_blank">Explore Games</a></button>
+  <div>
+    <div class="section">
+      <div class="container">
+        <div class="section__game-naming">
+          <h1>Star Wars<br />Battlefront II</h1>
+        </div>
+        <div class="section__button">
+          <button><a :href="links[0]" target="_blank">Watch Tralier</a></button>
+          <button><a :href="links[1]" target="_blank">Explore Games</a></button>
+        </div>
       </div>
     </div>
+    <shape-best-value></shape-best-value>
+    <select-games></select-games>
   </div>
 </template>
 
 <script>
+import shapeBestValue from "@/components/construction/shapeBestValue";
+import selectGames from "@/components/construction/selectGames.vue";
 export default {
+  components: {
+    "shape-best-value": shapeBestValue,
+    "select-games": selectGames,
+  },
   data() {
     return {
       links: [
@@ -42,6 +52,10 @@ export default {
       font-size: 36px;
       line-height: 42px;
       color: $white;
+    }
+    @media (max-width: $media-md) {
+      padding-top: 200px;
+      min-width: 210px;
     }
   }
   &__button {

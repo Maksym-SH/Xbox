@@ -2,18 +2,16 @@
   <div id="app">
     <navbar />
     <main>
-      <header-section />
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script>
 import navbar from "./components/construction/header.vue";
-import headerSection from "./views/headerSection.vue";
 export default {
   components: {
     navbar,
-    "header-section": headerSection,
   },
   data() {
     return {};

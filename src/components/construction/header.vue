@@ -53,9 +53,9 @@
             >
               <b-dropdown-item-button
                 v-for="item in accountXbox"
-                :key="item.value"
-                >{{ item.action }}</b-dropdown-item-button
-              >
+                :key="item.path"
+                ><router-link :to="item.path">{{ item.action }}</router-link>
+              </b-dropdown-item-button>
             </b-dropdown>
           </li>
         </ul>
@@ -68,6 +68,7 @@
 export default {
   data() {
     return {
+      ismd: false,
       xboxGames: [
         { game: "Call of Duty: WWII", value: "cod" },
         { game: "Destiny 2", value: "dst" },
@@ -81,9 +82,15 @@ export default {
         { console: "Xbox One X", value: "onex" },
       ],
       accountXbox: [
-        { action: "Sign in to your account", value: "sign" },
-        { action: "Create an account", value: "create" },
+        { action: "Sign in to your account", path: "/sign" },
+        { action: "Create an account", path: "/registration" },
       ],
+    };
+  },
+  mounted() {
+    window.onresize = () => {
+      window.innerWidth <= 980 ? (this.ismd = true) : (this.ismd = false);
+      console.log(this.ismd);
     };
   },
 };
@@ -103,6 +110,10 @@ export default {
   .container {
     margin: 0 auto;
     width: 76%;
+  }
+  &__menu-burger {
+    display: block;
+    position: fixed;
   }
   &__navbar {
     display: flex;
