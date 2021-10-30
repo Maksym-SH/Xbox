@@ -13,16 +13,19 @@
     </div>
     <shape-best-value></shape-best-value>
     <select-games></select-games>
+    <design-lab></design-lab>
   </div>
 </template>
 
 <script>
 import shapeBestValue from "@/components/construction/shapeBestValue";
 import selectGames from "@/components/construction/selectGames.vue";
+import designLab from "@/components/construction/designLab.vue";
 export default {
   components: {
     "shape-best-value": shapeBestValue,
     "select-games": selectGames,
+    "design-lab": designLab,
   },
   data() {
     return {
@@ -56,6 +59,11 @@ export default {
     @media (max-width: $media-md) {
       padding-top: 200px;
       min-width: 210px;
+    }
+  }
+  @media (max-width: $media-sm) {
+    & {
+      max-height: 600px;
     }
   }
   &__button {

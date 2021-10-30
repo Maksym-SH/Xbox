@@ -17,6 +17,9 @@
         </div>
       </div>
     </div>
+    <a href="https://www.xbox.com/ru-RU/games/all-games" target="_blank"
+      ><button class="exclusive__xbox-game">XBOX Store</button></a
+    >
   </div>
 </template>
 
@@ -26,27 +29,27 @@ export default {
     return {
       gameCard: [
         {
-          path: "@/assets/image/cod-card.png",
+          path: require("@/assets/image/cod-card.png"),
           name: "Call of Duty: WWII",
           description: "The C.O.D.E. Bravery Packis now available in WWII",
           links: "/cod",
         },
         {
-          path: "@/assets/image/dest-card.png",
+          path: require("@/assets/image/dest-card.png"),
           name: "Destiny 2",
           description:
             "You are the Guardian, protector of the Last City of humanity in the solar system",
           links: "/dest",
         },
         {
-          path: "@/assets/image/steep-card.png",
+          path: require("@/assets/image/steep-card.png"),
           name: "STEEP",
           description:
             "These are your mountains. Buckle up, put on your suit and go!",
           links: "/steep",
         },
         {
-          path: "@/assets/image/forza-card.png",
+          path: require("@/assets/image/forza-card.png"),
           name: "Forza Motorsport 7",
           description:
             "This is a whole community of fans of racing, drifting, drag racing and tuning.",
@@ -70,8 +73,19 @@ export default {
     line-height: 42px;
     color: $white;
   }
+  a {
+    text-decoration: none;
+  }
   &__image {
     width: 100%;
+    height: 140px;
+    border-radius: 4px;
+    @media (max-width: $media-sm) {
+      height: 160px;
+    }
+    @media (min-width: $media-lg) {
+      height: 200px;
+    }
   }
   &__game {
     width: 25%;
@@ -90,7 +104,19 @@ export default {
     width: 100%;
     padding: 15px;
     display: flex;
+    margin-bottom: 5;
     justify-content: space-between;
+  }
+  &__xbox-game {
+    background: linear-gradient(180deg, #686c6f 0%, #373a3c 100%);
+    border-radius: 4px;
+    color: $white;
+    padding: 11px 47px 11px 47px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    outline: none;
+    border: none;
   }
   @media (max-width: $media-md) {
     &__game-wrapper {
@@ -100,7 +126,7 @@ export default {
     &__game {
       width: 100%;
       margin: 0 auto;
-      margin-top: 15px;
+      margin-top: 30px;
     }
     & {
       padding-bottom: 50px;
@@ -124,11 +150,12 @@ export default {
     color: $light-dark;
   }
   &__game-description {
-    font-size: 21px;
+    font-size: 19px;
     line-height: 25px;
     color: $light-dark;
-    height: 100px;
-    @media (max-width: $media-lg) {
+    height: 130px;
+    overflow: hidden;
+    @media (max-width: $media-md) {
       & {
         height: auto;
       }

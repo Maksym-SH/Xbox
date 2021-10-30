@@ -36,19 +36,20 @@ export default {
       shapeDesc: ["The best value", "in games and entertainment"],
       shapeCard: [
         {
-          path: "@/assets/image/xbox-card.png",
+          path: require("@/assets/image/xbox-card.png"),
           name: "XBOX ONE X",
           description: "Faster Processing Smoother Gameplay",
           buttonDescription: "Explore Consoles & Accessories",
+          links: "https://www.xbox.com/en-US/consoles",
         },
         {
-          path: "@/assets/image/mixed-card.png",
+          path: require("@/assets/image/mixer-card.png"),
           name: "mixer Streaming",
           description: "The Next Generation Of Life Game Streaming",
           buttonDescription: "Start Watching mixer",
         },
         {
-          path: "@/assets/image/gamesGold-card.png",
+          path: require("@/assets/image/gamesGold-card.png"),
           name: "Free Games Every Month",
           description: "Get up to $700 in free games",
           buttonDescription: "Get Free Games",
@@ -157,6 +158,12 @@ export default {
     line-height: 28px;
     color: $light-dark;
     white-space: pre-wrap;
+    min-height: 100px;
+    @media (max-width: $media-sm) {
+      & {
+        font-size: 30px !important;
+      }
+    }
   }
   &__card-button {
     width: 100%;
