@@ -5,17 +5,35 @@
         <router-link to="/"
           ><img src="@/assets/icon/logo.svg" alt="Xbox Logo"
         /></router-link>
-        <ul class="header__list">
+        <span
+          ><img
+            src="@/assets/icon/menuBurger.svg"
+            alt=""
+            v-if="!menuOpen && ismd"
+            @click="menuOpen = true"
+        /></span>
+        <span
+          ><img
+            class="header__close-icon"
+            src="@/assets/icon/closeMenu.svg"
+            alt=""
+            v-if="menuOpen && ismd"
+            @click="menuOpen = false"
+        /></span>
+        <ul class="header__list" v-if="!ismd || menuOpen">
           <li>
             <b-dropdown
               text="Games"
               variant="outline-none border-none text-white"
             >
-              <b-dropdown-item-button
+              <router-link
+                class="header__links"
                 v-for="item in xboxGames"
                 :key="item.value"
-                >{{ item.game }}</b-dropdown-item-button
+                :to="item.value"
               >
+                <b-dropdown-item-button>{{ item.game }}</b-dropdown-item-button>
+              </router-link>
             </b-dropdown>
           </li>
           <li>
@@ -31,7 +49,7 @@
             </b-dropdown>
           </li>
           <li>
-            <router-link to="/"
+            <router-link to="/community"
               ><b-button variant="outline-none border-none text-white"
                 >Community</b-button
               ></router-link
@@ -41,11 +59,14 @@
             <b-form-input
               size="sm"
               class="py-2"
+              style="max-width: 150px"
               placeholder="Search"
             ></b-form-input>
           </li>
           <li>
-            <span><img src="@/assets/icon/Shape.svg" alt="" /></span>
+            <span v-if="!ismd"
+              ><img src="@/assets/icon/Shape.svg" alt=""
+            /></span>
             <b-dropdown
               text="My XBOX"
               variant="outline-none border-none text-white"
@@ -54,7 +75,9 @@
               <b-dropdown-item-button
                 v-for="item in accountXbox"
                 :key="item.path"
-                ><router-link :to="item.path">{{ item.action }}</router-link>
+                ><a :href="item.path" class="header__links">{{
+                  item.action
+                }}</a>
               </b-dropdown-item-button>
             </b-dropdown>
           </li>
@@ -69,17 +92,18 @@ export default {
   data() {
     return {
       ismd: false,
+      menuOpen: false,
       xboxGames: [
-        { game: "Call of Duty: WWII", value: "cod" },
-        { game: "Destiny 2", value: "dst" },
-        { game: "STEEP", value: "stp" },
-        { game: "Forza Motorsport 7", value: "fmt" },
+        { game: "Call of Duty: WWII", value: "/game/cod" },
+        { game: "Destiny 2", value: "/game/dst" },
+        { game: "STEEP", value: "/game/stp" },
+        { game: "Forza Motorsport 7", value: "/game/fmt" },
       ],
       xboxConsoles: [
-        { console: "Xbox 360", value: "360" },
-        { console: "Xbox One", value: "one" },
-        { console: "Xbox One S", value: "ones" },
-        { console: "Xbox One X", value: "onex" },
+        { console: "Xbox 360", value: "/console/360" },
+        { console: "Xbox One", value: "/console/one" },
+        { console: "Xbox One S", value: "/console/ones" },
+        { console: "Xbox One X", value: "/console/onex" },
       ],
       accountXbox: [
         { action: "Sign in to your account", path: "/sign" },
@@ -119,6 +143,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: $media-md) {
+      display: block;
+    }
   }
   &__list {
     list-style: none;
@@ -129,9 +156,36 @@ export default {
       color: $white;
     }
     li {
+      position: relative;
       margin-top: 10px;
       margin-right: 25px;
+      > span {
+        position: absolute;
+        top: -9px;
+        left: 15px;
+      }
     }
+  }
+  @media (max-width: $media-md) {
+    & {
+      display: block;
+      padding-top: 18px;
+      padding-bottom: 20px;
+    }
+    &__list {
+      display: block;
+      margin-left: -30px;
+      width: 120%;
+      padding-bottom: 20px;
+      background: $dark-grey;
+      li {
+        margin: 15px 0px;
+      }
+    }
+  }
+  &__links {
+    text-decoration: none;
+    color: $black;
   }
   select {
     margin-top: 10px;
@@ -147,6 +201,18 @@ export default {
     option {
       background: $dark-grey;
     }
+  }
+  &__close-icon {
+    position: absolute;
+    top: 12px;
+    right: 6px;
+  }
+}
+span {
+  img {
+    position: absolute;
+    top: 18px;
+    right: 12px;
   }
 }
 </style>

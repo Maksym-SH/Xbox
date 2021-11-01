@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div v-if="issm" class="footer__nav-collapse">
+    <div v-if="issm" class="footer__nav-collapse container">
       <b-button v-b-toggle.collapse-xbox class="m-1 footer__collapse"
         >XBOX</b-button
       >
@@ -151,7 +151,6 @@ export default {
   mounted() {
     window.onresize = () => {
       window.innerWidth <= 720 ? (this.issm = true) : (this.issm = false);
-      console.log(this.issm);
     };
   },
 };

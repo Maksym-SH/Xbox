@@ -46,6 +46,7 @@ export default {
   margin-top: 64px;
   width: 100%;
   height: 100vh;
+  min-height: 600px;
   &__game-naming {
     display: flex;
     padding-top: calc(40% - 43px / 2 - 93.5px);
