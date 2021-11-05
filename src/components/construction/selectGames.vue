@@ -66,7 +66,7 @@ export default {
 .exclusive {
   width: 100%;
   padding: 97px 0px 140px 0px;
-  background: url(../../assets/image/second-page.jpg) no-repeat center center;
+  background: url(../../assets/image/cod-page.jpg) no-repeat center center;
   background-size: cover;
   > h1 {
     font-size: 36px;

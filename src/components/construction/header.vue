@@ -64,9 +64,7 @@
             ></b-form-input>
           </li>
           <li>
-            <span v-if="!ismd"
-              ><img src="@/assets/icon/Shape.svg" alt=""
-            /></span>
+            <img v-if="!ismd" src="@/assets/icon/Shape.svg" alt="" />
             <b-dropdown
               text="My XBOX"
               variant="outline-none border-none text-white"
@@ -114,7 +112,6 @@ export default {
   mounted() {
     window.onresize = () => {
       window.innerWidth <= 980 ? (this.ismd = true) : (this.ismd = false);
-      console.log(this.ismd);
     };
   },
 };
