@@ -26,14 +26,14 @@
               text="Games"
               variant="outline-none border-none text-white"
             >
-              <router-link
+              <a
                 class="header__links"
                 v-for="item in xboxGames"
                 :key="item.value"
-                :to="item.value"
+                :href="item.value"
               >
                 <b-dropdown-item-button>{{ item.game }}</b-dropdown-item-button>
-              </router-link>
+              </a>
             </b-dropdown>
           </li>
           <li>
@@ -87,9 +87,15 @@
 
 <script>
 export default {
+  props: {
+    ismd: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   data() {
     return {
-      ismd: false,
       menuOpen: false,
       xboxGames: [
         { game: "Call of Duty: WWII", value: "/game/cod" },
@@ -107,11 +113,6 @@ export default {
         { action: "Sign in to your account", path: "/sign" },
         { action: "Create an account", path: "/registration" },
       ],
-    };
-  },
-  mounted() {
-    window.onresize = () => {
-      window.innerWidth <= 980 ? (this.ismd = true) : (this.ismd = false);
     };
   },
 };

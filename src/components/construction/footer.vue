@@ -90,9 +90,15 @@
 </template>
 <script>
 export default {
+  props: {
+    issm: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   data() {
     return {
-      issm: false,
       footerNavXBOX: [
         "XBOX",
         { navName: "Support", path: "https://support.xbox.com/en-US/" },
@@ -146,11 +152,6 @@ export default {
           links: "https://www.instagram.com/?hl=ru",
         },
       ],
-    };
-  },
-  mounted() {
-    window.onresize = () => {
-      window.innerWidth <= 720 ? (this.issm = true) : (this.issm = false);
     };
   },
 };

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <navbar />
+    <navbar :ismd="ismd" />
     <main>
       <router-view></router-view>
     </main>
-    <footers></footers>
+    <footers :issm="issm"></footers>
   </div>
 </template>
 
@@ -17,7 +17,16 @@ export default {
     footers,
   },
   data() {
-    return {};
+    return {
+      ismd: false,
+      issm: false,
+    };
+  },
+  mounted() {
+    window.onresize = () => {
+      window.innerWidth <= 980 ? (this.ismd = true) : (this.ismd = false);
+      window.innerWidth <= 720 ? (this.issm = true) : (this.issm = false);
+    };
   },
 };
 </script>

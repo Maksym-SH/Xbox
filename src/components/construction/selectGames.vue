@@ -9,7 +9,7 @@
           <h2 class="exclusive__game-description">
             {{ game.description }}
           </h2>
-          <router-link :to="game.links" @click="dataTransfer(game)"
+          <router-link :to="game.links"
             ><button class="exclusive__game-button">
               See Details
             </button></router-link

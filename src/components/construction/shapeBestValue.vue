@@ -19,9 +19,11 @@
             <h2 class="shape__card-description">
               {{ card.description }}
             </h2>
-            <button class="shape__card-button">
-              {{ card.buttonDescription }}
-            </button>
+            <a :href="card.links" target="_blank">
+              <button class="shape__card-button">
+                {{ card.buttonDescription }}
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -47,12 +49,14 @@ export default {
           name: "mixer Streaming",
           description: "The Next Generation Of Life Game Streaming",
           buttonDescription: "Start Watching mixer",
+          links: "https://varvid.com/broadcast-platforms/mixer/",
         },
         {
           path: require("@/assets/image/gamesGold-card.png"),
           name: "Free Games Every Month",
           description: "Get up to $700 in free games",
           buttonDescription: "Get Free Games",
+          links: "https://www.xbox.com/ru-RU/live/gold",
         },
       ],
     };
