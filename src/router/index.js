@@ -7,6 +7,7 @@ import loginAccount from "@/views/loginAccount";
 import community from "@/views/community";
 import Games from "@/views/CheckedGames";
 import notFound from "@/views/notFound";
+import Console from "@/views/CheckedConsole";
 const routes = [
   {
     path: "/",
@@ -32,6 +33,11 @@ const routes = [
     path: "/game/:id",
     name: "games",
     component: Games,
+  },
+  {
+    path: "/console/:id",
+    name: "console",
+    component: Console,
   },
   {
     path: "*",

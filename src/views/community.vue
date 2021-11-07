@@ -33,7 +33,7 @@ export default {
   background: $light-dark;
   color: $white;
   &__desc {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 30px;
     margin: 30px 0px;
   }
