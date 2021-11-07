@@ -5,9 +5,9 @@ Vue.use(VueRouter);
 import home from "@/views/HomeSection";
 import loginAccount from "@/views/loginAccount";
 import community from "@/views/community";
-import Games from "@/views/CheckedGames";
+import games from "@/views/CheckedGames";
 import notFound from "@/views/notFound";
-import Console from "@/views/CheckedConsole";
+import console from "@/views/CheckedConsole";
 const routes = [
   {
     path: "/",
@@ -32,12 +32,12 @@ const routes = [
   {
     path: "/game/:id",
     name: "games",
-    component: Games,
+    component: games,
   },
   {
     path: "/console/:id",
     name: "console",
-    component: Console,
+    component: console,
   },
   {
     path: "*",

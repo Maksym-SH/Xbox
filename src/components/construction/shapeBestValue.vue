@@ -71,6 +71,9 @@ export default {
   padding-top: 64px;
   padding-bottom: 162px;
   background: linear-gradient(180deg, #686c6f 0%, #373a3c 100%);
+  @media (max-width: $media-md) {
+    padding: 60px 0px;
+  }
   &__content {
     display: flex;
     justify-content: center;
@@ -140,7 +143,7 @@ export default {
       align-items: center;
     }
     &__card {
-      width: 70%;
+      width: 50%;
       margin: 10px 0px;
     }
   }

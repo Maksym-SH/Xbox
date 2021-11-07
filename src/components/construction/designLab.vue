@@ -82,10 +82,10 @@ export default {
     }
     &__but,
     &__second-but {
-      padding: 15px 30px;
+      padding: 15px 19px;
     }
     & {
-      padding-top: 97px;
+      padding-top: 60px;
       padding-bottom: 60px;
     }
   }

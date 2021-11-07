@@ -73,6 +73,16 @@ export default {
     line-height: 42px;
     color: $white;
   }
+  @media (max-width: $media-xs) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  @media (max-width: $media-md) {
+    & {
+      padding-top: 60px;
+    }
+  }
   a {
     text-decoration: none;
   }
@@ -80,11 +90,14 @@ export default {
     width: 100%;
     height: 140px;
     border-radius: 4px;
-    @media (max-width: $media-sm) {
+    @media (max-width: $media-md) {
       height: 250px;
     }
     @media (min-width: $media-lg) {
-      height: 190px;
+      height: 230px;
+    }
+    @media (max-width: $media-xs) {
+      height: 160px;
     }
   }
   &__game {
