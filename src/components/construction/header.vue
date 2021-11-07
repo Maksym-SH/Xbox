@@ -41,11 +41,16 @@
               text="Consoles"
               variant="outline-none border-none text-white"
             >
-              <b-dropdown-item-button
+              <a
+                class="header__links"
                 v-for="item in xboxConsoles"
                 :key="item.value"
-                >{{ item.console }}</b-dropdown-item-button
+                :href="item.value"
               >
+                <b-dropdown-item-button>{{
+                  item.console
+                }}</b-dropdown-item-button>
+              </a>
             </b-dropdown>
           </li>
           <li>
@@ -58,8 +63,7 @@
           <li>
             <b-form-input
               size="sm"
-              class="py-2"
-              style="max-width: 150px"
+              class="py-2 header__input"
               placeholder="Search"
             ></b-form-input>
           </li>
@@ -179,6 +183,12 @@ export default {
       li {
         margin: 15px 0px;
       }
+    }
+  }
+  &__input {
+    max-width: 150px;
+    @media (max-width: $media-md) {
+      margin-left: 11px;
     }
   }
   &__links {
