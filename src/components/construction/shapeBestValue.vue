@@ -92,6 +92,7 @@ export default {
   }
   &__card-wrapper {
     display: flex;
+    margin-top: 20px;
     align-items: center;
     justify-content: space-between;
   }
@@ -101,6 +102,10 @@ export default {
     border: 1px solid $light-green;
     margin: 0px 32px;
     background: $white;
+    transition: 0.5s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
     &:first-child {
       margin-left: 0px;
     }
@@ -145,6 +150,9 @@ export default {
     &__card {
       width: 50%;
       margin: 10px 0px;
+      @media (max-width: $media-xs) {
+        width: 95%;
+      }
     }
   }
   &__card-container {
@@ -161,14 +169,14 @@ export default {
     line-height: 21px;
   }
   &__card-description {
-    font-size: 24px;
+    font-size: 25px;
     line-height: 28px;
     color: $light-dark;
     white-space: pre-wrap;
     min-height: 100px;
     @media (max-width: $media-sm) {
       & {
-        font-size: 30px !important;
+        font-size: 23px !important;
       }
     }
   }
@@ -176,6 +184,7 @@ export default {
     width: 100%;
     outline: none;
     border: none;
+    font-size: 15px;
     border-radius: 4px;
     background: $light-green;
     margin-top: 20px;

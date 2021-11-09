@@ -94,7 +94,7 @@ export default {
       height: 250px;
     }
     @media (min-width: $media-lg) {
-      height: 230px;
+      height: 200px;
     }
     @media (max-width: $media-xs) {
       height: 160px;
