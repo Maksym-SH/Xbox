@@ -148,8 +148,8 @@ export default {
       align-items: center;
     }
     &__card {
-      width: 50%;
-      margin: 10px 0px;
+      width: 90%;
+      margin: 18px 0px;
       @media (max-width: $media-xs) {
         width: 95%;
       }

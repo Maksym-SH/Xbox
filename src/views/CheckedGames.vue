@@ -264,7 +264,7 @@ export default {
   &__naming {
     display: block;
     text-align: end;
-    padding-top: calc(40% - 43px / 2 - 93.5px);
+    padding-top: calc(30% - 35px / 2 - 87.5px);
     justify-content: end;
     margin-right: 0px;
     color: $white;
