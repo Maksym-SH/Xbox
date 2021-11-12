@@ -22,10 +22,16 @@ export default {
       issm: false,
     };
   },
-  mounted() {
-    window.onresize = () => {
+  methods: {
+    checkWidth() {
       window.innerWidth <= 980 ? (this.ismd = true) : (this.ismd = false);
       window.innerWidth <= 720 ? (this.issm = true) : (this.issm = false);
+    },
+  },
+  mounted() {
+    this.checkWidth();
+    window.onresize = () => {
+      this.checkWidth();
     };
   },
 };

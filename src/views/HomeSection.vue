@@ -29,6 +29,7 @@ export default {
   },
   data() {
     return {
+      times: 18,
       links: [
         "https://www.youtube.com/watch?v=xHutJNEoIx0&ab_channel=StopGame.Ru",
         "https://www.ea.com/ru-ru/games/starwars/battlefront/star-wars-battlefront-2",
