@@ -147,7 +147,7 @@ export default {
       align-items: center;
     }
     &__card {
-      width: 90%;
+      width: 52%;
       margin: 18px 0px;
       @media (max-width: $media-xs) {
         width: 95%;
