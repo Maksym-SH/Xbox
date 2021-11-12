@@ -153,10 +153,6 @@ export default {
     list-style: none;
     display: flex;
     color: rgba(255, 255, 255, 0.5);
-    transition: all 0.2s ease;
-    &:hover {
-      color: $white;
-    }
     li {
       position: relative;
       margin-top: 10px;

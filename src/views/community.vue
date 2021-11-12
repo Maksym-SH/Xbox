@@ -1,5 +1,5 @@
 <template>
-  <div class="community">
+  <section class="community">
     <div class="container">
       <div>
         <p v-for="item in description" :key="item" class="community__desc">
@@ -7,7 +7,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

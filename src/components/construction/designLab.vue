@@ -1,5 +1,5 @@
 <template>
-  <div class="design">
+  <section class="design">
     <div class="container">
       <h2 class="design__name">{{ designDesc[0] }}</h2>
       <p class="design__description">{{ designDesc[1] }}</p>
@@ -16,7 +16,7 @@
         >
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

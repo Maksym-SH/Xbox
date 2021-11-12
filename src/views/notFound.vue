@@ -1,5 +1,5 @@
 <template>
-  <div class="notFound">
+  <section class="notFound">
     <div class="notFound__wrapper">
       <h1>404</h1>
       <h2>Error</h2>
@@ -9,7 +9,7 @@
       </p>
       <router-link to="/"><button>Back to home</button></router-link>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

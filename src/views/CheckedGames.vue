@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div
       class="game"
       :style="{ 'background-image': 'url(' + objectGames.path + ')' }"
@@ -72,7 +72,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="sign">
+  <section class="sign">
     <div class="container">
       <div class="sign__wrapper">
         <h2 class="sign__name">
@@ -33,7 +33,7 @@
         >
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

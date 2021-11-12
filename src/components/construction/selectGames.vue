@@ -1,5 +1,5 @@
 <template>
-  <div class="exclusive">
+  <section class="exclusive">
     <h1 align="center">Exclusive games on XBOX</h1>
     <div class="exclusive__game-wrapper">
       <div class="exclusive__game" v-for="game in gameCard" :key="game.name">
@@ -20,7 +20,7 @@
     <a href="https://www.xbox.com/ru-RU/games/all-games" target="_blank"
       ><button class="exclusive__xbox-game">XBOX Store</button></a
     >
-  </div>
+  </section>
 </template>
 
 <script>

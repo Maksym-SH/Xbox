@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="section">
+    <section class="section">
       <div class="container">
         <div class="section__game-naming">
           <h1>Star Wars<br />Battlefront II</h1>
@@ -10,7 +10,7 @@
           <button><a :href="links[1]" target="_blank">Explore Games</a></button>
         </div>
       </div>
-    </div>
+    </section>
     <shape-best-value></shape-best-value>
     <select-games></select-games>
     <design-lab></design-lab>

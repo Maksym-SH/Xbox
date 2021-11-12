@@ -1,6 +1,5 @@
-/* eslint-disable prettier/prettier */
 <template>
-  <div class="shape">
+  <section class="shape">
     <div class="container shape__content">
       <div class="shape__description">
         <img src="@/assets/icon/logoShape.svg" alt="Logo Shape" />
@@ -28,7 +27,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

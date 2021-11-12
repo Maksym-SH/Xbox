@@ -118,7 +118,6 @@ export default {
   },
   mounted() {
     this.checkConsole();
-    console.log(this.objectConsole);
   },
 };
 </script>
