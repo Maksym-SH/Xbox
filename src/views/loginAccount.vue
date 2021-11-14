@@ -21,12 +21,15 @@
             required
           />
           <input
-            type="submit"
+            type="button"
             :value="AccountData[1]"
             class="sign__butt"
             @click="CheckoutData()"
           />
         </form>
+        <a href="/registration" class="sign__links" v-if="isnew"
+          >If you are here for the first time, click here</a
+        >
         <router-link to="/" v-if="signCompleted" class="sign__links"
           >You have successfully {{ this.$route.name }}, you can go back by
           clicking here</router-link
@@ -37,6 +40,7 @@
 </template>
 
 <script>
+import { bus } from "@/main";
 export default {
   data() {
     return {
@@ -45,16 +49,25 @@ export default {
       email: "",
       password: "",
       signCompleted: false,
+      isnew: true,
     };
+  },
+  watch: {
+    email() {
+      this.isnew = false;
+    },
+    password() {
+      this.isnew = false;
+    },
   },
   mounted() {
     if (this.$route.name === "sign") {
       this.AccountData.unshift("Sign to account", "Sign");
-      this.createdAccount = true;
-    } else if (this.$route.name === "registration") {
+    } else {
       this.AccountData.unshift("Registration", "Registration");
-      this.createdAccount = true;
+      this.isnew = false;
     }
+    this.createdAccount = true;
   },
   methods: {
     CheckoutData() {
@@ -64,6 +77,8 @@ export default {
         this.password.length >= 8
       ) {
         this.signCompleted = true;
+        (this.email = ""), (this.password = "");
+        bus.$emit("signSuccess", this.signCompleted);
       }
     },
   },

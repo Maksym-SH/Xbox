@@ -67,8 +67,21 @@
               placeholder="Search"
             ></b-form-input>
           </li>
-          <li>
-            <img v-if="!ismd" src="@/assets/icon/Shape.svg" alt="" />
+          <li class="header__account">
+            <img
+              style="cursor: pointer"
+              v-if="!sign"
+              src="@/assets/icon/Shape.svg"
+              alt=""
+              :title="signValue[0]"
+            />
+            <img
+              style="cursor: pointer"
+              v-if="sign"
+              src="@/assets/icon/signCompleted.svg"
+              alt=""
+              :title="signValue[1]"
+            />
             <b-dropdown
               text="My XBOX"
               variant="outline-none border-none text-white"
@@ -90,6 +103,7 @@
 </template>
 
 <script>
+import { bus } from "@/main";
 export default {
   props: {
     ismd: {
@@ -100,7 +114,9 @@ export default {
   },
   data() {
     return {
+      sign: false,
       menuOpen: false,
+      signValue: ["You are not signed in yet", "You are already signed in"],
       xboxGames: [
         { game: "Call of Duty: WWII", value: "/game/cod" },
         { game: "Destiny 2", value: "/game/dst" },
@@ -118,6 +134,11 @@ export default {
         { action: "Create an account", path: "/registration" },
       ],
     };
+  },
+  created() {
+    bus.$on("signSuccess", (value) => {
+      this.sign = value;
+    });
   },
 };
 </script>
@@ -185,6 +206,12 @@ export default {
     max-width: 150px;
     @media (max-width: $media-md) {
       margin-left: 11px;
+    }
+  }
+  &__account {
+    margin: 0px;
+    @media (max-width: $media-md) {
+      margin-left: 12px !important;
     }
   }
   &__links {
