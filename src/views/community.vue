@@ -6,6 +6,9 @@
           {{ item }}
         </p>
       </div>
+      <router-link to="/"
+        ><button class="community__back">To Back</button></router-link
+      >
     </div>
   </section>
 </template>
@@ -30,12 +33,26 @@ export default {
   width: 100%;
   height: 100vh;
   padding-top: 100px;
+  padding-bottom: 30px;
   background: $light-dark;
   color: $white;
+  @media (max-height: 600px) {
+    height: 100%;
+  }
   &__desc {
     font-size: 18px;
     line-height: 30px;
     margin: 30px 0px;
+  }
+  &__back {
+    border: 1px solid $light-green;
+    background: none;
+    padding: 8px 24px;
+    color: $light-green;
+    font-size: 16px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
   }
   @media (max-width: 993px) {
     & {
@@ -44,16 +61,6 @@ export default {
     &__desc {
       font-size: 15px;
       line-height: 20px;
-      margin: 20px 0px;
-    }
-  }
-  @media (max-width: $media-sm) {
-    & {
-      padding-top: 70px;
-    }
-    &__desc {
-      font-size: 12px;
-      line-height: 18px;
       margin: 20px 0px;
     }
   }
