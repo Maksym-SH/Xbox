@@ -16,7 +16,9 @@
         Play over 100 high quality console and PC games and get all the benefits
         of Xbox Live Gold and EA Play.
       </p>
-      <a href="https://www.xbox.com/ru-RU/games/all-games?xr=shellnav"
+      <a
+        href="https://www.xbox.com/ru-RU/games/all-games?xr=shellnav"
+        target="_blank"
         ><button class="console__more-details">
           More details
           <span

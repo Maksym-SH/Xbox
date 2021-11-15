@@ -13,7 +13,11 @@
           <a :href="objectGames.order" target="_blank">
             <button>Order now</button>
           </a>
-          <a href="https://www.xbox.com/ru-RU/games/all-games" alt="">
+          <a
+            href="https://www.xbox.com/ru-RU/games/all-games"
+            target="_blank"
+            alt=""
+          >
             <button>More Games</button>
           </a>
         </div>
