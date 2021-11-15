@@ -36,7 +36,7 @@ export default {
   padding-bottom: 30px;
   background: $light-dark;
   color: $white;
-  @media (max-height: 600px) {
+  @media (max-height: 700px) {
     height: 100%;
   }
   &__desc {
