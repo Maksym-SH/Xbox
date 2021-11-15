@@ -60,12 +60,16 @@
               ></router-link
             >
           </li>
-          <li>
+          <li class="header__input">
             <b-form-input
               size="sm"
-              class="py-2 header__input"
-              placeholder="Search"
+              class="py-2"
+              placeholder="Search page"
+              v-model="inputValue"
             ></b-form-input>
+            <router-link :to="inputValue">
+              <span v-if="inputValue">{{ inputValue }}</span>
+            </router-link>
           </li>
           <li class="header__account">
             <img
@@ -114,6 +118,7 @@ export default {
   },
   data() {
     return {
+      inputValue: "",
       sign: false,
       menuOpen: false,
       signValue: "You are not signed in yet",
@@ -203,9 +208,25 @@ export default {
     }
   }
   &__input {
+    position: relative;
     max-width: 150px;
     @media (max-width: $media-md) {
       margin-left: 11px;
+    }
+    span {
+      position: absolute;
+      width: 100%;
+      top: 41px !important;
+      left: 0 !important;
+      height: 40px;
+      z-index: +99;
+      border-radius: 4px;
+      background: $white;
+      color: $black;
+      padding: 5px;
+      a {
+        color: $black;
+      }
     }
   }
   &__account {
