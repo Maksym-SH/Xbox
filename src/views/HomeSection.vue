@@ -84,7 +84,6 @@ export default {
       border: none;
       a {
         color: $white;
-        text-decoration: none;
       }
       &:first-child {
         background: $light-green;

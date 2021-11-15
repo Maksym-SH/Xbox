@@ -181,7 +181,6 @@ export default {
     color: $light-green;
   }
   a {
-    text-decoration: none;
     color: $white;
   }
   &__nav {

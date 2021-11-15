@@ -350,7 +350,6 @@ export default {
       color: $white;
       a {
         color: $white;
-        text-decoration: none;
       }
       &:first-child {
         background: $light-green;

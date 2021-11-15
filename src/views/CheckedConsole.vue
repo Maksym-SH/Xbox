@@ -304,6 +304,5 @@ export default {
 }
 a {
   color: $black;
-  text-decoration: none;
 }
 </style>

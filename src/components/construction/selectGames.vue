@@ -83,9 +83,6 @@ export default {
       padding-top: 60px;
     }
   }
-  a {
-    text-decoration: none;
-  }
   &__image {
     width: 100%;
     height: 140px;
