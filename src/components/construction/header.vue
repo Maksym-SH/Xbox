@@ -73,14 +73,14 @@
               v-if="!sign"
               src="@/assets/icon/Shape.svg"
               alt=""
-              :title="signValue[0]"
+              :title="signValue"
             />
             <img
               style="cursor: pointer"
               v-if="sign"
               src="@/assets/icon/signCompleted.svg"
               alt=""
-              :title="signValue[1]"
+              :title="'You are logged in as ' + sign[1]"
             />
             <b-dropdown
               text="My XBOX"
@@ -116,7 +116,7 @@ export default {
     return {
       sign: false,
       menuOpen: false,
-      signValue: ["You are not signed in yet", "You are already signed in"],
+      signValue: "You are not signed in yet",
       xboxGames: [
         { game: "Call of Duty: WWII", value: "/game/cod" },
         { game: "Destiny 2", value: "/game/dst" },

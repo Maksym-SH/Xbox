@@ -21,6 +21,14 @@
             required
           />
           <input
+            type="password"
+            v-model="repeatPassword"
+            placeholder="Repeat password"
+            v-if="this.$route.name !== 'sign'"
+            class="sign__inputs"
+            required
+          />
+          <input
             type="button"
             :value="AccountData[1]"
             class="sign__butt"
@@ -34,6 +42,9 @@
           >You have successfully {{ this.$route.name }}, you can go back by
           clicking here</router-link
         >
+        <p v-if="isWrong" class="sign__links">
+          Invalid mail format or passwords do not match, please try again.
+        </p>
       </div>
     </div>
   </section>
@@ -48,16 +59,24 @@ export default {
       createdAccount: false,
       email: "",
       password: "",
+      repeatPassword: "",
       signCompleted: false,
       isnew: true,
+      isWrong: false,
+      massSigned: [],
     };
   },
   watch: {
     email() {
       this.isnew = false;
+      this.isWrong = false;
     },
     password() {
       this.isnew = false;
+      this.isWrong = false;
+    },
+    repeatPassword() {
+      this.isWrong = false;
     },
   },
   mounted() {
@@ -72,13 +91,17 @@ export default {
   methods: {
     CheckoutData() {
       if (
-        this.email.indexOf("@") != -1 &&
-        this.email.indexOf(".") != -1 &&
-        this.password.length >= 8
+        (this.email.indexOf("@") != -1 &&
+          this.email.indexOf(".") != -1 &&
+          this.password.length >= 8) ||
+        this.password === this.repeatPassword
       ) {
         this.signCompleted = true;
-        (this.email = ""), (this.password = "");
-        bus.$emit("signSuccess", this.signCompleted);
+        this.massSigned.push(this.signCompleted, this.email);
+        bus.$emit("signSuccess", this.massSigned);
+        (this.email = ""), (this.password = ""), (this.repeatPassword = "");
+      } else {
+        this.isWrong = true;
       }
     },
   },
@@ -136,6 +159,7 @@ export default {
     text-align: center;
     font-size: 16px;
     margin-top: 15px;
+    margin-bottom: 0px;
   }
 }
 </style>
