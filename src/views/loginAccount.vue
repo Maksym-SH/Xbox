@@ -91,8 +91,8 @@ export default {
   methods: {
     CheckoutData() {
       if (
-        (this.email.indexOf("@") != -1 &&
-          this.email.indexOf(".") != -1 &&
+        (this.email.indexOf("@") !== -1 &&
+          this.email.indexOf(".") !== -1 &&
           this.password.length >= 8) ||
         this.password === this.repeatPassword
       ) {

@@ -7,7 +7,7 @@
       <div class="container">
         <div class="game__naming">
           <h1>{{ objectGames.name }}</h1>
-          <p>Released on:{{ objectGames.released }}</p>
+          <p>Released on: {{ objectGames.released }}</p>
         </div>
         <div class="game__button">
           <a :href="objectGames.order" target="_blank">
@@ -45,14 +45,14 @@
         <div class="d-flex justify-content-between game__image-block">
           <h2 class="game__deck">{{ objectGames.massDescription[0] }}</h2>
           <img
-            :src="massImage[0]"
+            :src="objectImage.first_image"
             :alt="objectGames.name"
             class="game__section-image"
           />
         </div>
         <div class="game__image-block">
           <img
-            :src="massImage[1]"
+            :src="objectImage.second_image"
             :alt="objectGames.name"
             class="game__section-image"
           />
@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       objectGames: {},
-      massImage: [],
+      objectImage: {},
       massGames: [
         {
           path: require("./../assets/image/cod-page.jpg"),
@@ -150,16 +150,14 @@ export default {
           this.objectGames = this.massGames[i];
         }
       }
-      this.massImage.push(
-        require(`@/assets/image/img-game-section/${this.$route.path.slice(
-          6,
-          9
-        )}-first.png`),
-        require(`@/assets/image/img-game-section/${this.$route.path.slice(
-          6,
-          9
-        )}-second.png`)
-      );
+      this.objectImage.first_image = require(`@/assets/image/img-game-section/${this.$route.path.slice(
+        6,
+        9
+      )}-first.png`);
+      this.objectImage.second_image = require(`@/assets/image/img-game-section/${this.$route.path.slice(
+        6,
+        9
+      )}-second.png`);
     },
   },
   mounted() {

@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container d-flex justify-content-between" v-if="!issm">
       <div>
-        <h3>{{ footerNavXBOX[0] }}</h3>
+        <h3>{{ xboxName }}</h3>
         <p
           class="footer__nav"
           v-for="item in footerNavXBOX"
@@ -12,7 +12,7 @@
         </p>
       </div>
       <div>
-        <h3>{{ footerNavDevelopers[0] }}</h3>
+        <h3>{{ devName }}</h3>
         <p
           class="footer__nav"
           v-for="secondItem in footerNavDevelopers"
@@ -24,7 +24,7 @@
         </p>
       </div>
       <div class="text-center">
-        <h3>{{ footerSocial[0] }}</h3>
+        <h3>{{ followName }}</h3>
         <div class="footer__images">
           <a
             v-for="itemThird in footerSocial"
@@ -37,9 +37,9 @@
       </div>
     </div>
     <div v-if="issm" class="footer__nav-collapse container">
-      <b-button v-b-toggle.collapse-xbox class="m-1 footer__collapse"
-        >XBOX</b-button
-      >
+      <b-button v-b-toggle.collapse-xbox class="m-1 footer__collapse">{{
+        xboxName
+      }}</b-button>
       <b-collapse
         id="collapse-xbox"
         class="mt-2"
@@ -50,9 +50,9 @@
           ><b-card> {{ item.navName }}</b-card>
         </a>
       </b-collapse>
-      <b-button v-b-toggle.collapse-developers class="m-1 footer__collapse"
-        >Developers</b-button
-      >
+      <b-button v-b-toggle.collapse-developers class="m-1 footer__collapse">{{
+        devName
+      }}</b-button>
       <b-collapse
         id="collapse-developers"
         class="mt-2"
@@ -63,9 +63,9 @@
           ><b-card> {{ item.navName }}</b-card>
         </a>
       </b-collapse>
-      <b-button v-b-toggle.collapse-follow-Us class="m-1 footer__collapse"
-        >Follow Us</b-button
-      >
+      <b-button v-b-toggle.collapse-follow-Us class="m-1 footer__collapse">{{
+        followName
+      }}</b-button>
       <b-collapse
         id="collapse-follow-Us"
         class="mt-2"
@@ -99,8 +99,10 @@ export default {
   },
   data() {
     return {
+      xboxName: "XBOX",
+      devName: "Developers",
+      followName: "Follow Us",
       footerNavXBOX: [
-        "XBOX",
         { navName: "Support", path: "https://support.xbox.com/en-US/" },
         {
           navName: "Contact us",
@@ -116,7 +118,6 @@ export default {
         },
       ],
       footerNavDevelopers: [
-        "Developers",
         {
           navName: "Games",
           path: "https://www.xbox.com/ru-RU/games/all-games",
@@ -135,7 +136,6 @@ export default {
         },
       ],
       footerSocial: [
-        "Follow Us",
         {
           name: "Facebook",
           path: require("@/assets/icon/facebook.svg"),
