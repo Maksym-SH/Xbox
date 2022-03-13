@@ -43,7 +43,7 @@
       </div>
       <div class="container">
         <div class="d-flex justify-content-between game__image-block">
-          <h2 class="game__deck">{{ objectGames.massDescription[0] }}</h2>
+          <h2 class="game__deck">{{ objectGames.firstTitle }}</h2>
           <img
             :src="objectImage.first_image"
             :alt="objectGames.name"
@@ -56,7 +56,7 @@
             :alt="objectGames.name"
             class="game__section-image"
           />
-          <h2 class="game__deck">{{ objectGames.massDescription[1] }}</h2>
+          <h2 class="game__deck">{{ objectGames.secondTitle }}</h2>
         </div>
         <h3 class="game__rights">
           All rights of the game are reserved, the product can be used for
@@ -69,10 +69,11 @@
           <a
             href="https://varvid.com/broadcast-platforms/mixer/"
             target="_blank"
-            ><button class="game__button-end-first game__button-end-second">
-              Start streaming on mixer
-            </button></a
           >
+            <button class="game__button-end-first game__button-end-second">
+              Start streaming on mixer
+            </button>
+          </a>
         </div>
       </div>
     </section>
@@ -95,7 +96,8 @@ export default {
           description: "The C.O.D.E. Bravery Packis now available in WWII",
           links: "/game/cod",
           trailerEmbed: "https://www.youtube.com/embed/D4Q_XYVescc",
-          massDescription: ["The best modern equipment", "Realistic shooting"],
+          firstTitle: "The best modern equipment",
+          secondTitle: "Realistic shooting",
         },
         {
           path: require("./../assets/image/destiny-page.jpg"),
@@ -106,10 +108,9 @@ export default {
             "You are the Guardian, protector of the Last City of humanity in the solar system",
           links: "/game/dst",
           trailerEmbed: "https://www.youtube.com/embed/hdWkpbPTpmE",
-          massDescription: [
-            "Guardian - protector of the last safe city on Earth",
+          firstTitle: "Guardian - protector of the last safe city on Earth",
+          secondTitle:
             "Еxploration of the world with the search for hidden secrets",
-          ],
         },
         {
           path: require("./../assets/image/steep-page.jpg"),
@@ -120,10 +121,8 @@ export default {
             "These are your mountains. Buckle up, put on your suit and go!",
           links: "/game/stp",
           trailerEmbed: "https://www.youtube.com/embed/XznTHeUkGXA",
-          massDescription: [
-            "Participation in several disciplines of winter sports",
-            "Rocket-powered wingsuit flight",
-          ],
+          firstTitle: "Participation in several disciplines of winter sports",
+          secondTitle: "Rocket-powered wingsuit flight",
         },
         {
           path: require("./../assets/image/forza-page.jpg"),
@@ -135,10 +134,8 @@ export default {
             "This is a whole community of fans of racing, drifting, drag racing and tuning.",
           links: "/game/fmt",
           trailerEmbed: "https://www.youtube.com/embed/9aAr5blVy0g",
-          massDescription: [
-            "700 vehicles and over 200 different configurations",
-            "Street circuit in Dubai is one of the new schemes",
-          ],
+          firstTitle: "700 vehicles and over 200 different configurations",
+          secondTitle: "Street circuit in Dubai is one of the new schemes",
         },
       ],
     };
