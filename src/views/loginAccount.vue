@@ -3,45 +3,46 @@
     <div class="container">
       <div class="sign__wrapper">
         <h2 class="sign__name">
-          {{ AccountData[0] }}
+          {{ accountData[0] }}
         </h2>
         <form action="">
           <input
             type="email"
-            v-model="email"
+            @input="callNewEmail($event.target.value)"
             placeholder="User"
             class="sign__inputs"
             required
           />
           <input
             type="password"
-            v-model="password"
+            @input="callNewPassword($event.target.value)"
             placeholder="Password"
             class="sign__inputs"
             required
           />
           <input
             type="password"
-            v-model="repeatPassword"
+            @input="callNewRepeatPassword($event.target.value)"
             placeholder="Repeat password"
-            v-if="this.$route.name !== 'sign'"
+            v-if="routeName !== 'sign'"
             class="sign__inputs"
             required
           />
           <input
             type="button"
-            :value="AccountData[1]"
+            :value="accountData[1]"
             class="sign__butt"
-            @click="CheckoutData()"
+            @click="callCheckoutData()"
+            :disabled="buttonDisabled"
           />
         </form>
-        <a href="/registration" class="sign__links" v-if="isnew"
-          >If you are here for the first time, click here</a
-        >
-        <router-link to="/" v-if="signCompleted" class="sign__links"
-          >You have successfully {{ this.$route.name }}, you can go back by
-          clicking here</router-link
-        >
+        <a href="/registration" class="sign__links" v-if="isnew">
+          If you are here for the first time, click here
+        </a>
+        <router-link to="/" v-if="signCompleted" class="sign__links">
+          You have successfully {{ routeName }}, you can go back by clicking
+          here
+        </router-link>
         <p v-if="isWrong" class="sign__links">
           Invalid mail format or passwords do not match, please try again.
         </p>
@@ -49,61 +50,41 @@
     </div>
   </section>
 </template>
-
 <script>
-import { bus } from "@/main";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      AccountData: [{}],
-      createdAccount: false,
-      email: "",
-      password: "",
-      repeatPassword: "",
-      signCompleted: false,
-      isnew: true,
-      isWrong: false,
-      massSigned: [],
+      routeName: this.$route.name,
     };
   },
-  watch: {
-    email() {
-      this.isnew = false;
-      this.isWrong = false;
-    },
-    password() {
-      this.isnew = false;
-      this.isWrong = false;
-    },
-    repeatPassword() {
-      this.isWrong = false;
-    },
-  },
-  mounted() {
-    if (this.$route.name === "sign") {
-      this.AccountData.unshift("Sign to account", "Sign");
-    } else {
-      this.AccountData.unshift("Registration", "Registration");
-      this.isnew = false;
-    }
-    this.createdAccount = true;
+  computed: {
+    ...mapState(["email", "password", "repeatPassword"]),
+    ...mapGetters([
+      "accountData",
+      "createdAccount",
+      "signCompleted",
+      "isnew",
+      "massSigned",
+      "isWrong",
+      "accountData",
+      "getEmail",
+      "getPassword",
+      "getRepeatPassword",
+      "buttonDisabled",
+    ]),
   },
   methods: {
-    CheckoutData() {
-      if (
-        (this.email.indexOf("@") !== -1 &&
-          this.email.indexOf(".") !== -1 &&
-          this.password.length >= 8) ||
-        this.password === this.repeatPassword
-      ) {
-        this.signCompleted = true;
-        this.massSigned.push(this.signCompleted, this.email);
-        bus.$emit("signSuccess", this.massSigned);
-        (this.email = ""), (this.password = ""), (this.repeatPassword = "");
-      } else {
-        this.isWrong = true;
-      }
-    },
+    ...mapActions([
+      "callCheckoutData",
+      "callTypePage",
+      "callNewEmail",
+      "callNewPassword",
+      "callNewRepeatPassword",
+    ]),
+  },
+  mounted() {
+    this.callTypePage(this.routeName);
   },
 };
 </script>
@@ -124,7 +105,7 @@ export default {
     color: $black;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 10%);
     border-radius: 4px;
   }
   &__name {

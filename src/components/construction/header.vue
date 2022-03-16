@@ -2,24 +2,26 @@
   <header class="header">
     <div class="container-lg">
       <nav class="header__navbar navbar-expand-lg">
-        <router-link to="/"
-          ><img src="@/assets/icon/logo.svg" alt="Xbox Logo"
-        /></router-link>
-        <span
-          ><img
+        <router-link to="/">
+          <img src="@/assets/icon/logo.svg" alt="Xbox Logo" />
+        </router-link>
+        <span>
+          <img
             src="@/assets/icon/menuBurger.svg"
             alt=""
             v-if="!menuOpen && ismd"
-            @click="menuOpen = true"
-        /></span>
-        <span
-          ><img
+            @click="callMenuOpenChange(true)"
+          />
+        </span>
+        <span>
+          <img
             class="header__close-icon"
             src="@/assets/icon/closeMenu.svg"
             alt=""
             v-if="menuOpen && ismd"
-            @click="menuOpen = false"
-        /></span>
+            @click="callMenuOpenChange(false)"
+          />
+        </span>
         <ul class="header__list" v-if="!ismd || menuOpen">
           <li>
             <b-dropdown
@@ -47,25 +49,26 @@
                 :key="item.value"
                 :href="item.value"
               >
-                <b-dropdown-item-button>{{
-                  item.console
-                }}</b-dropdown-item-button>
+                <b-dropdown-item-button>
+                  {{ item.console }}
+                </b-dropdown-item-button>
               </a>
             </b-dropdown>
           </li>
           <li>
-            <router-link to="/community"
-              ><b-button variant="outline-none border-none text-white"
-                >Community</b-button
-              ></router-link
-            >
+            <router-link to="/community">
+              <b-button variant="outline-none border-none text-white">
+                Community
+              </b-button>
+            </router-link>
           </li>
           <li class="header__input">
             <b-form-input
               size="sm"
               class="py-2"
               placeholder="Search page"
-              v-model="inputValue"
+              :value="inputValue"
+              @input="callUpdateInputSearch"
             ></b-form-input>
             <router-link :to="inputValue">
               <span v-if="inputValue">{{ inputValue }}</span>
@@ -94,9 +97,8 @@
               <b-dropdown-item-button
                 v-for="item in accountXbox"
                 :key="item.path"
-                ><a :href="item.path" class="header__links">{{
-                  item.action
-                }}</a>
+              >
+                <a :href="item.path" class="header__links">{{ item.action }}</a>
               </b-dropdown-item-button>
             </b-dropdown>
           </li>
@@ -107,7 +109,7 @@
 </template>
 
 <script>
-import { bus } from "@/main";
+import { mapGetters, mapActions } from "vuex";
 export default {
   props: {
     ismd: {
@@ -116,35 +118,20 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {
-      inputValue: "",
-      sign: false,
-      menuOpen: false,
-      signValue: "You are not signed in yet",
-      xboxGames: [
-        { game: "Call of Duty: WWII", value: "/game/cod" },
-        { game: "Destiny 2", value: "/game/dst" },
-        { game: "STEEP", value: "/game/stp" },
-        { game: "Forza Motorsport 7", value: "/game/fmt" },
-      ],
-      xboxConsoles: [
-        { console: "Xbox 360", value: "/console/360" },
-        { console: "Xbox One", value: "/console/one" },
-        { console: "Xbox One S", value: "/console/ones" },
-        { console: "Xbox One X", value: "/console/onex" },
-      ],
-      accountXbox: [
-        { action: "Sign in to your account", path: "/sign" },
-        { action: "Create an account", path: "/registration" },
-      ],
-    };
-  },
-  created() {
-    bus.$on("signSuccess", (value) => {
-      this.sign = value;
-    });
-  },
+  computed: mapGetters([
+    "menuOpen",
+    "xboxGames",
+    "inputValue",
+    "xboxConsoles",
+    "accountXbox",
+    "signValue",
+    "sign",
+  ]),
+  methods: mapActions([
+    "callUpdateSign",
+    "callMenuOpenChange",
+    "callUpdateInputSearch",
+  ]),
 };
 </script>
 

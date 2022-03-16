@@ -12,11 +12,7 @@
   </section>
 </template>
 <script>
-export default {
-  data() {
-    return {};
-  },
-};
+export default {};
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/variables";

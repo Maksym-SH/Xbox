@@ -7,31 +7,21 @@
     <footers :issm="issm"></footers>
   </div>
 </template>
-
 <script>
 import navbar from "./components/construction/header.vue";
 import footers from "./components/construction/footer.vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     navbar,
     footers,
   },
-  data() {
-    return {
-      ismd: false,
-      issm: false,
-    };
-  },
-  methods: {
-    checkWidth() {
-      window.innerWidth <= 980 ? (this.ismd = true) : (this.ismd = false);
-      window.innerWidth <= 720 ? (this.issm = true) : (this.issm = false);
-    },
-  },
+  computed: mapGetters(["issm", "ismd"]),
+  methods: mapActions(["callCheckWidth"]),
   mounted() {
-    this.checkWidth();
+    this.callCheckWidth(window.innerWidth);
     window.onresize = () => {
-      this.checkWidth();
+      this.callCheckWidth(window.innerWidth);
     };
   },
 };

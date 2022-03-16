@@ -18,9 +18,9 @@
           v-for="secondItem in footerNavDevelopers"
           :key="secondItem.navName"
         >
-          <a :href="secondItem.path" target="_blank">{{
-            secondItem.navName
-          }}</a>
+          <a :href="secondItem.path" target="_blank">
+            {{ secondItem.navName }}
+          </a>
         </p>
       </div>
       <div class="text-center">
@@ -37,45 +37,46 @@
       </div>
     </div>
     <div v-if="issm" class="footer__nav-collapse container">
-      <b-button v-b-toggle.collapse-xbox class="m-1 footer__collapse">{{
-        xboxName
-      }}</b-button>
+      <b-button v-b-toggle.collapse-xbox class="m-1 footer__collapse">
+        {{ xboxName }}
+      </b-button>
       <b-collapse
         id="collapse-xbox"
         class="mt-2"
         v-for="item in footerNavXBOX.slice(1, footerNavXBOX.length)"
         :key="item.navName"
       >
-        <a :href="item.path" target="_blank"
-          ><b-card> {{ item.navName }}</b-card>
+        <a :href="item.path" target="_blank">
+          <b-card>{{ item.navName }}</b-card>
         </a>
       </b-collapse>
-      <b-button v-b-toggle.collapse-developers class="m-1 footer__collapse">{{
-        devName
-      }}</b-button>
+      <b-button v-b-toggle.collapse-developers class="m-1 footer__collapse">
+        {{ devName }}
+      </b-button>
       <b-collapse
         id="collapse-developers"
         class="mt-2"
         v-for="item in footerNavDevelopers.slice(1, footerNavXBOX.length)"
         :key="item.navName"
       >
-        <a :href="item.path" target="_blank"
-          ><b-card> {{ item.navName }}</b-card>
+        <a :href="item.path" target="_blank">
+          <b-card>{{ item.navName }}</b-card>
         </a>
       </b-collapse>
-      <b-button v-b-toggle.collapse-follow-Us class="m-1 footer__collapse">{{
-        followName
-      }}</b-button>
+      <b-button v-b-toggle.collapse-follow-Us class="m-1 footer__collapse">
+        {{ followName }}
+      </b-button>
       <b-collapse
         id="collapse-follow-Us"
         class="mt-2"
-        v-for="item in footerSocial.slice(1, footerNavXBOX.length)"
+        v-for="item in footerSocial"
         :key="item.name"
       >
-        <a :href="item.links" target="_blank"
-          ><b-card
-            ><img :src="item.path" :alt="item.name" /> {{ item.name }}</b-card
-          >
+        <a :href="item.links" target="_blank">
+          <b-card>
+            <img :src="item.path" :alt="item.name" />
+            {{ item.name }}
+          </b-card>
         </a>
       </b-collapse>
     </div>
@@ -89,6 +90,7 @@
   </footer>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: {
     issm: {
@@ -97,63 +99,14 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {
-      xboxName: "XBOX",
-      devName: "Developers",
-      followName: "Follow Us",
-      footerNavXBOX: [
-        { navName: "Support", path: "https://support.xbox.com/en-US/" },
-        {
-          navName: "Contact us",
-          path: "https://support.xbox.com/en-US/contact-us",
-        },
-        {
-          navName: "Privacy & cookies ",
-          path: "https://privacy.microsoft.com/ru-ru/privacystatement",
-        },
-        {
-          navName: "Terms of use ",
-          path: "https://www.microsoft.com/en-us/legal/terms-of-use",
-        },
-      ],
-      footerNavDevelopers: [
-        {
-          navName: "Games",
-          path: "https://www.xbox.com/ru-RU/games/all-games",
-        },
-        {
-          navName: "Windows 10",
-          path: "https://www.xbox.com/ru-RU/xbox-game-pass/pc-games",
-        },
-        {
-          navName: "Creators Program",
-          path: "https://www.xbox.com/ru-RU/developers/creators-program",
-        },
-        {
-          navName: "Designed for XBOX",
-          path: "https://www.figma.com/file/ykE2koNH98kf6AHQpaXAKi/xbox",
-        },
-      ],
-      footerSocial: [
-        {
-          name: "Facebook",
-          path: require("@/assets/icon/facebook.svg"),
-          links: "https://uk-ua.facebook.com/",
-        },
-        {
-          name: "Twitter",
-          path: require("@/assets/icon/twitter.svg"),
-          links: "https://twitter.com/?lang=ru",
-        },
-        {
-          name: "Instagram",
-          path: require("@/assets/icon/instagram.svg"),
-          links: "https://www.instagram.com/?hl=ru",
-        },
-      ],
-    };
-  },
+  computed: mapGetters([
+    "xboxName",
+    "devName",
+    "followName",
+    "footerNavXBOX",
+    "footerNavDevelopers",
+    "footerSocial",
+  ]),
 };
 </script>
 

@@ -3,7 +3,11 @@
     <section class="section">
       <div class="container">
         <div class="section__game-naming">
-          <h1>Star Wars<br />Battlefront II</h1>
+          <h1>
+            Star Wars
+            <br />
+            Battlefront II
+          </h1>
         </div>
         <div class="section__button">
           <button><a :href="links[0]" target="_blank">Watch Tralier</a></button>
@@ -18,6 +22,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import shapeBestValue from "@/components/construction/shapeBestValue";
 import selectGames from "@/components/construction/selectGames.vue";
 import designLab from "@/components/construction/designLab.vue";
@@ -27,15 +32,7 @@ export default {
     "select-games": selectGames,
     "design-lab": designLab,
   },
-  data() {
-    return {
-      times: 18,
-      links: [
-        "https://www.youtube.com/watch?v=xHutJNEoIx0&ab_channel=StopGame.Ru",
-        "https://www.ea.com/ru-ru/games/starwars/battlefront/star-wars-battlefront-2",
-      ],
-    };
-  },
+  computed: mapGetters(["links"]),
 };
 </script>
 

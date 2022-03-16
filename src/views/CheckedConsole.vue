@@ -19,12 +19,12 @@
       <a
         href="https://www.xbox.com/ru-RU/games/all-games?xr=shellnav"
         target="_blank"
-        ><button class="console__more-details">
+      >
+        <button class="console__more-details">
           More details
-          <span
-            ><img src="@/assets/icon/arrow-right.svg" alt=""
-          /></span></button
-      ></a>
+          <span><img src="@/assets/icon/arrow-right.svg" alt="" /></span>
+        </button>
+      </a>
       <h2 class="console__play-more"><span>Play more, wait less</span></h2>
       <p>
         The redesigned control panel has been designed to speed up your access
@@ -39,9 +39,10 @@
     <div class="console__game-pass">
       <h3>FINE PERFORMANCE ADJUSTMENT</h3>
       <p>
-        The <span>Xbox</span> Wireless Controller offers sleek design,
-        sophisticated comfort, and instant transfer into the hands of the person
-        you know.
+        The
+        <span>Xbox</span>
+        Wireless Controller offers sleek design, sophisticated comfort, and
+        instant transfer into the hands of the person you know.
       </p>
       <img
         src="@/assets/image/controller.png"
@@ -56,13 +57,16 @@
           alt="Xbox wirelles controller"
         />
         <p>
-          Experience the redesigned <span>Xbox</span> Wireless Controller and
-          enjoy its curved surfaces and sophisticated geometry for enhanced
-          gaming comfort. Never miss your target again with textured handles and
-          hybrid D-pad. Capture and share content easily with a dedicated Share
-          button. Quickly pair, play and switch between devices including<span>
-            Xbox Series X | S, Xbox One, Windows 10 PC, Android, and iOS.</span
-          >
+          Experience the redesigned
+          <span>Xbox</span>
+          Wireless Controller and enjoy its curved surfaces and sophisticated
+          geometry for enhanced gaming comfort. Never miss your target again
+          with textured handles and hybrid D-pad. Capture and share content
+          easily with a dedicated Share button. Quickly pair, play and switch
+          between devices including
+          <span>
+            Xbox Series X | S, Xbox One, Windows 10 PC, Android, and iOS.
+          </span>
         </p>
       </div>
     </div>
@@ -70,81 +74,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      objectConsole: {},
-      massConsole: [
-        {
-          path: require("./../assets/image/360.png"),
-          description:
-            "The Xbox 360 is Microsoft's second game console to follow the Xbox. The Xbox 360 competes with the Sony PlayStation 3 and Nintendo Wii for its seventh generation gaming system. Some of the main features of the Xbox 360 are represented by the Xbox Live service, which allows you to play over the Internet, as well as download a variety of content - video games, demos, trailers, music, TV shows, and more.",
-          links: "/console/360",
-          massDesc: [
-            {
-              heading: "ABSOLUTE CONTROL",
-              performance:
-                "The textured surface of the triggers and bumpers allows for a secure grip and prevents the controller from slipping out.",
-            },
-            {
-              heading: "YOUR WIN!",
-              performance: "Show off your victories on our official website",
-            },
-            {
-              heading: "FULL CIRCLE",
-              performance:
-                "Renewal in all directions. The hybrid crosspiece design allows you to confidently navigate the toughest combinations without relying on luck alone.",
-            },
-          ],
-        },
-        {
-          path: require("./../assets/image/one.png"),
-          description:
-            "Xbox One is Microsoft's third game console and successor to the Xbox 360. Xbox One's eighth generation gaming platforms are Sony Computer Entertainment's PlayStation 4, Nintendo's Wii U and Nintendo Switch.",
-          links: "/console/one",
-        },
-        {
-          path: require("./../assets/image/ones.png"),
-          description:
-            "According to Microsoft, the case of the console has become smaller by 40% than in the previous version. Xbox One S received support for 4K and HDR resolution. Also, another difference is the built-in power supply.",
-          links: "/console/ones",
-        },
-        {
-          path: require("./../assets/image/onex.png"),
-          description:
-            "Xbox Series X is compatible with some of the older Xbox titles, but not all of them. The console will support both disks and virtual copies of games",
-          links: "/console/onex",
-          massDesc: [
-            {
-              heading: "ABSOLUTE CONTROL",
-              performance:
-                "The textured surface of the triggers and bumpers allows for a secure grip and prevents the controller from slipping out.",
-            },
-            {
-              heading: "YOUR WIN!",
-              performance: "Show off your victories on our official website",
-            },
-            {
-              heading: "FULL CIRCLE",
-              performance:
-                "Renewal in all directions. The hybrid crosspiece design allows you to confidently navigate the toughest combinations without relying on luck alone.",
-            },
-          ],
-        },
-      ],
+      route: this.$route.path,
     };
   },
-  methods: {
-    checkConsole() {
-      for (let i = 0; i < this.massConsole.length; i++) {
-        if (this.massConsole[i].links === this.$route.path) {
-          this.objectConsole = this.massConsole[i];
-        }
-      }
-    },
-  },
+  computed: mapGetters(["massConsole", "objectConsole"]),
+  methods: mapActions(["callCheckConsole"]),
   mounted() {
-    this.checkConsole();
+    this.callCheckConsole(this.route);
   },
 };
 </script>
